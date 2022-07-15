@@ -1,7 +1,6 @@
 package time_tools
 
 import (
-	"fmt"
 	"strconv"
 	"time"
 )
@@ -65,11 +64,4 @@ func (impl TimeUtilsImpl) GetNowMsStr() string {
 	ms := time.Now().UnixNano() / 1e3
 	r := strconv.FormatInt(ms, 10)
 	return r
-}
-
-type JSONTime time.Time
-
-func (p JSONTime) MarshalJSON() ([]byte, error) {
-	var stamp = fmt.Sprintf("\"%s\"", time.Time(p).Format("2006-01-02 15:04:05"))
-	return []byte(stamp), nil
 }
